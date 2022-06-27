@@ -136,6 +136,16 @@ impl Mul<f32> for Normal {
     }
 }
 
+impl From<Vector> for Normal {
+    fn from(vector: Vector) -> Self {
+        Self {
+            x: vector.x,
+            y: vector.y,
+            z: vector.z,
+        }
+    }
+}
+
 /// Create a orthonormal basis (ONB) from a [`Normal`] representing the z axis.\
 ///
 /// Return a tuple containing the three [`Vector`] of the basis.\
@@ -251,4 +261,14 @@ mod test {
             assert!((e1 * e2).is_close(e3))
         }
     }
+    
+    #[test]
+    fn test_from(){
+            assert_eq!(
+                Normal::from(Vector::from((2.0, 2.0, 2.0))),
+                Normal::from((2.0, 2.0, 2.0))
+            );
+            assert!(Normal::from(Vector::from((2.0 + EPSILON * 1e-1, 2.0, 2.0)))
+                .is_close(Normal::from(Vector::from((2.0, 2.0, 2.0)))))
+        }
 }
