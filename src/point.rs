@@ -28,6 +28,16 @@ impl From<(f32, f32, f32)> for Point {
     }
 }
 
+impl From<[f32; 3]> for Point {
+    fn from(p: [f32; 3]) -> Self {
+        Self {
+            x: p[0],
+            y: p[1],
+            z: p[2],
+        }
+    }
+}
+
 impl IsClose for Point {
     /// Return `true` if the three xyz components of two [`Point`] are [close](trait@IsClose).
     fn is_close(&self, other: Point) -> bool {
