@@ -2,7 +2,10 @@
 //!
 //! Provides [`Normal`](struct@Normal) struct.
 use crate::{misc::IsClose, vector::Vector};
-use std::{fmt, ops::Mul};
+use std::{
+    fmt,
+    ops::{Add, Mul},
+};
 
 /// X-axis normal.
 pub const E1: Normal = Normal {
@@ -97,6 +100,18 @@ impl IsClose for Normal {
     /// Return `true` if the three xyz components of two [`Normal`] are [close](trait@IsClose).
     fn is_close(&self, other: Normal) -> bool {
         self.x.is_close(other.x) & self.y.is_close(other.y) & self.z.is_close(other.z)
+    }
+}
+
+impl Add for Normal {
+    type Output = Normal;
+
+    fn add(self, other: Normal) -> Self::Output {
+        Normal {
+            x: self.x + other.x,
+            y: self.y + other.y,
+            z: self.z + other.z,
+        }
     }
 }
 
@@ -280,5 +295,13 @@ mod test {
         );
         assert!(Normal::from(Vector::from((2.0 + EPSILON * 1e-1, 2.0, 2.0)))
             .is_close(Normal::from([2.0, 2.0, 2.0])))
+    }
+
+    #[test]
+    fn test_add() {
+        assert_eq!(
+            Normal::from([1., 2., 3.]) + Normal::from((2., 1., 0.)),
+            Normal::from((1., 1., 1.)) * 3.
+        )
     }
 }
