@@ -18,6 +18,7 @@ mod shape;
 mod transformation;
 mod vector;
 mod world;
+mod mesh;
 
 use clap_complete::{generate, Shell};
 use image::ImageFormat;
