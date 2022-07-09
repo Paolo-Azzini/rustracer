@@ -7,6 +7,7 @@ mod error;
 mod hdrimage;
 mod imagetracer;
 mod material;
+mod mesh;
 mod misc;
 mod normal;
 mod point;
@@ -18,7 +19,6 @@ mod shape;
 mod transformation;
 mod vector;
 mod world;
-mod mesh;
 
 use clap_complete::{generate, Shell};
 use image::ImageFormat;

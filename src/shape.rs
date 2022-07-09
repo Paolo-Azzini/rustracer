@@ -28,7 +28,7 @@ pub trait RayIntersection: std::fmt::Debug + Send + Sync {
 }
 
 /// Struct used to store the results of [`RayIntersection`](trait@RayIntersection).
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct HitRecord {
     /// Coordinates of the point of impact.
     pub world_point: Point,
