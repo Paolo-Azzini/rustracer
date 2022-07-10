@@ -1,7 +1,7 @@
 //! Triangle Mesh module
 //!
 //! Provides tools to define and manage triangle meshes.
-//! Like [shapes](module@shape), [`Mesh`](struct@Mesh) implement the
+//! Like [shapes](../shape), [`Mesh`](struct@Mesh) implements the
 //! [`RayIntersection`](trait@RayIntersection) trait.
 
 use crate::misc::Vector2D;
